@@ -11,7 +11,7 @@ output: html_document
 [AervinnGithub] (https://github.com/Aervinn/RepData_PeerAssessment1)
 
 
-##Finally found a way to make this work for me. Ran the following lines in the console. 
+##Finally found a way to make this work for me. Ran the following lines in the     console. 
 
 *I FOUND THIS IN THE WEEK 2 FORUM*
 
