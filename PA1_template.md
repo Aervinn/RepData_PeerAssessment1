@@ -11,7 +11,7 @@ output: html_document
 [AervinnGithub] (https://github.com/Aervinn/RepData_PeerAssessment1)
 
 
-##Finally found a way to make this work for me. Ran the following lines in the console. 
+##Finally found a way to make this work for me. Ran the following lines in the     console. 
 
 *I FOUND THIS IN THE WEEK 2 FORUM*
 
@@ -21,7 +21,12 @@ output: html_document
 
 ##knit("PA1_template.Rmd")
 
-##markdownToHTML("PA1_template.md","PA1_template.html")
+##markdownToHTML("PA1_template.md","PA1_template.html") PNG FILE IS MISSING*
+
+*ANOTHER UPDATE FROM THE FORUM: THIS IS WHY MY PLOT'S
+
+##When you commit, make sure you include the directory "PA1_template_files" along with the .md and .rmd files. And quoting from Ailsa D, "Also, make sure you upload the folder: 'PA1_template_files/figure-html' as this is where the plot files are located and linked to in the .md file."
+
 
 ## Introduction
 It is now possible to collect a large amount of data about personal movement using activity monitoring devices such as a Fitbit, Nike Fuelband, or Jawbone Up. These type of devices are part of the “quantified self” movement – a group of enthusiasts who take measurements about themselves regularly to improve their health, to find patterns in their behavior, or because they are tech geeks. But these data remain under-utilized both because the raw data are hard to obtain and there is a lack of statistical methods and software for processing and interpreting the data.
