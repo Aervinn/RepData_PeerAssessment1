@@ -3,13 +3,25 @@ title: "Reproducible Research Assignment 1"
 author: "aervinn"
 date: "1/8/2021"
 output: html_document
-          keep_md: TRUE
 ---
 
 
 ---
 
 [AervinnGithub] (https://github.com/Aervinn/RepData_PeerAssessment1)
+
+
+##Finally found a way to make this work for me. Ran the following lines in the console. 
+
+*I FOUND THIS IN THE WEEK 2 FORUM*
+
+##library(knitr)
+
+##library(markdown)
+
+##knit("PA1_template.Rmd")
+
+##markdownToHTML("PA1_template.md","PA1_template.html")
 
 ## Introduction
 It is now possible to collect a large amount of data about personal movement using activity monitoring devices such as a Fitbit, Nike Fuelband, or Jawbone Up. These type of devices are part of the “quantified self” movement – a group of enthusiasts who take measurements about themselves regularly to improve their health, to find patterns in their behavior, or because they are tech geeks. But these data remain under-utilized both because the raw data are hard to obtain and there is a lack of statistical methods and software for processing and interpreting the data.
@@ -48,7 +60,7 @@ activityDT <- data.table::fread(input = "data/activity.csv")
 
 1. Calculate the total number of steps taken per day
 
-```{r simulation, echo=TRUE, results='asis'}
+```{r echo=TRUE}
 Total_Steps <- activityDT[, c(lapply(.SD, sum, na.rm = FALSE)), .SDcols = c("steps"), by = .(date)] 
 
 head(Total_Steps, 10)

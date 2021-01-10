@@ -3,13 +3,25 @@ title: "Reproducible Research Assignment 1"
 author: "aervinn"
 date: "1/8/2021"
 output: html_document
-          keep_md: TRUE
 ---
 
 
 ---
 
 [AervinnGithub] (https://github.com/Aervinn/RepData_PeerAssessment1)
+
+
+##Finally found a way to make this work for me. Ran the following lines in the console. 
+
+*I FOUND THIS IN THE WEEK 2 FORUM*
+
+##library(knitr)
+
+##library(markdown)
+
+##knit("PA1_template.Rmd")
+
+##markdownToHTML("PA1_template.md","PA1_template.html")
 
 ## Introduction
 It is now possible to collect a large amount of data about personal movement using activity monitoring devices such as a Fitbit, Nike Fuelband, or Jawbone Up. These type of devices are part of the “quantified self” movement – a group of enthusiasts who take measurements about themselves regularly to improve their health, to find patterns in their behavior, or because they are tech geeks. But these data remain under-utilized both because the raw data are hard to obtain and there is a lack of statistical methods and software for processing and interpreting the data.
@@ -33,13 +45,6 @@ Unzip data to obtain a csv file.
 
 ```r
 library("data.table")
-```
-
-```
-## data.table 1.13.2 using 2 threads (see ?getDTthreads).  Latest news: r-datatable.com
-```
-
-```r
 library(ggplot2)
 
 fileUrl <- "https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip"
@@ -64,17 +69,19 @@ Total_Steps <- activityDT[, c(lapply(.SD, sum, na.rm = FALSE)), .SDcols = c("ste
 head(Total_Steps, 10)
 ```
 
-          date steps
- 1: 2012-10-01    NA
- 2: 2012-10-02   126
- 3: 2012-10-03 11352
- 4: 2012-10-04 12116
- 5: 2012-10-05 13294
- 6: 2012-10-06 15420
- 7: 2012-10-07 11015
- 8: 2012-10-08    NA
- 9: 2012-10-09 12811
-10: 2012-10-10  9900
+```
+##           date steps
+##  1: 2012-10-01    NA
+##  2: 2012-10-02   126
+##  3: 2012-10-03 11352
+##  4: 2012-10-04 12116
+##  5: 2012-10-05 13294
+##  6: 2012-10-06 15420
+##  7: 2012-10-07 11015
+##  8: 2012-10-08    NA
+##  9: 2012-10-09 12811
+## 10: 2012-10-10  9900
+```
 
 2. If you do not understand the difference between a histogram and a barplot, research the difference between them. Make a histogram of the total number of steps taken each day. 
 
@@ -89,7 +96,7 @@ ggplot(Total_Steps, aes(x = steps)) +
 ## Warning: Removed 8 rows containing non-finite values (stat_bin).
 ```
 
-![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png)
+![plot of chunk unnamed-chunk-17](figure/unnamed-chunk-17-1.png)
 
 3. Calculate and report the mean and median of the total number of steps taken per day
 
@@ -113,7 +120,7 @@ IntervalDT <- activityDT[, c(lapply(.SD, mean, na.rm = TRUE)), .SDcols = c("step
 ggplot(IntervalDT, aes(x = interval , y = steps)) + geom_line(color="blue", size=1) + labs(title = "Avg. Daily Steps", x = "Interval", y = "Avg. Steps per day")
 ```
 
-![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5-1.png)
+![plot of chunk unnamed-chunk-19](figure/unnamed-chunk-19-1.png)
 
 2. Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
@@ -185,7 +192,7 @@ Total_Steps[, .(Mean_Steps = mean(steps), Median_Steps = median(steps))]
 ggplot(Total_Steps, aes(x = steps)) + geom_histogram(fill = "blue", binwidth = 1000) + labs(title = "Daily Steps", x = "Steps", y = "Frequency")
 ```
 
-![plot of chunk unnamed-chunk-10](figure/unnamed-chunk-10-1.png)
+![plot of chunk unnamed-chunk-24](figure/unnamed-chunk-24-1.png)
 
 Type of Estimate | Mean_Steps | Median_Steps
 --- | --- | ---
@@ -232,4 +239,4 @@ IntervalDT <- activityDT[, c(lapply(.SD, mean, na.rm = TRUE)), .SDcols = c("step
 ggplot(IntervalDT , aes(x = interval , y = steps, color=`weekday or weekend`)) + geom_line() + labs(title = "Avg. Daily Steps by Weektype", x = "Interval", y = "No. of Steps") + facet_wrap(~`weekday or weekend` , ncol = 1, nrow=2)
 ```
 
-![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-12-1.png)
+![plot of chunk unnamed-chunk-26](figure/unnamed-chunk-26-1.png)
